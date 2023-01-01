@@ -1,3 +1,5 @@
+///Код ниже позаимствован и отредактирован
+
 const baseItem = document.querySelector('.timer');
 
 const markUp = `<div class="time-section" id="days">
@@ -171,6 +173,7 @@ function updateTimeSection(sectionID, timeValue) {
   const secondNumber = timeValue % 10 || 0;
     const sectionElement = document.getElementById(sectionID);
     const timeSegments = sectionElement.querySelectorAll(".time-segment");
+    
 
   updateTimeSegment(timeSegments[0], firstNumber);
   updateTimeSegment(timeSegments[1], secondNumber);
