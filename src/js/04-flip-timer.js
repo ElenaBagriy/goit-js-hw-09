@@ -44,7 +44,11 @@ function startCountdown() {
         counter += 1;
         const currentDate = Date.now();
         const timeLeft = convertMs(selectedDate - currentDate);
-        console.log(timeLeft)
+        
+        if ((selectedDate - currentDate) <= 0) {
+            clearInterval(intervalId);
+            return;
+        }
         
         updateAllSegments(timeLeft);
     }, 1000);

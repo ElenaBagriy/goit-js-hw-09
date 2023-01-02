@@ -48,6 +48,11 @@ function startCountdown() {
     counter += 1;
     const currentDate = Date.now();
     const timeLeft = convertMs(selectedDate - currentDate);
+
+    if ((selectedDate - currentDate) <= 0) {
+      clearInterval(intervalId);
+      return;
+    }
         
     updateTimerFace(timeLeft);
   }, 1000);
