@@ -4,10 +4,7 @@ import "flatpickr/dist/flatpickr.min.css";
 import "notiflix/dist/notiflix-3.2.5.min.css";
 
 const button = document.querySelector('button[data-start]');
-const daysLeft = document.querySelector('.value[data-days]');
-const hoursLeft = document.querySelector('.value[data-hours]')
-const minutesLeft = document.querySelector('.value[data-minutes]')
-const secondsLeft = document.querySelector('.value[data-seconds]')
+const fields = document.querySelectorAll('.timer .value');
 
 button.disabled = true;
 let selectedDate;
@@ -87,10 +84,12 @@ function addLeadingZero(value) {
   return value.padStart(2, 0);
 }
 
-function updateTimerFace({ days, hours, minutes, seconds }) {
-  console.log({days, hours, minutes, seconds})
-  daysLeft.textContent = `${addLeadingZero(days.toString())}`;
-  hoursLeft.textContent = `${addLeadingZero(hours.toString())}`;
-  minutesLeft.textContent = `${addLeadingZero(minutes.toString())}`;
-  secondsLeft.textContent = `${addLeadingZero(seconds.toString())}`;
+function updateTimerFace(timeLeft) {
+  console.log(timeLeft);
+
+  Object.values(timeLeft).forEach((value, index) => {
+    const item = fields[index];
+    item.textContent = addLeadingZero(value.toString());
+
+  });
 }
